@@ -11,6 +11,9 @@ const Header = () => {
         setActive(section);
     }
 
+    // const cvURL = "https://github.com/HseinKt/Portfolio/raw/main/public/Hussein%20Kteish_Resume.pdf";
+    const cvURL = "../public/Hussein_Kteish_Resume.pdf"
+
     return ( 
         <div className="nav">
             <div className="nav-logo">
@@ -31,7 +34,9 @@ const Header = () => {
                 </ul>
             </div>
             <div className="nav-btn">
-                <button className="btn">Download CV <AiOutlineFilePdf /> </button>
+                <a href={cvURL} download>
+                    <button className="btn">Download CV <AiOutlineFilePdf /> </button>
+                </a>
             </div>
             <div className="nav-menu-btn">
                 <FiMenu className="fimenu" />
