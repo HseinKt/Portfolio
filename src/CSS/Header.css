@@ -57,4 +57,32 @@
   .nav-menu-btn {
     display: none;
   }
+  .fimenu {
+    font-size: 30px;
+    cursor: pointer;
+  }
   
+  @media only screen and (max-width: 1105px) {
+    .nav-menu {
+      display: none;
+    }
+    .nav-btn {
+      display: none;
+    }
+    .nav-menu-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    } 
+    .fimenu {
+      margin-top: 25px;
+    } 
+  }
+
+  @media only screen and (max-width: 320px) {
+    .nav-name {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.1px;
+    }
+  }

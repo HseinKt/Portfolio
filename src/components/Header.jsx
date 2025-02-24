@@ -1,5 +1,7 @@
 import { useState } from "react";
 import '../CSS/Header.css'
+import { AiOutlineFilePdf } from "react-icons/ai";
+import { FiMenu } from "react-icons/fi";
 
 const Header = () => {
     const [active, setActive] = useState("Home");
@@ -29,10 +31,10 @@ const Header = () => {
                 </ul>
             </div>
             <div className="nav-btn">
-                <button className="btn">Download CV</button>
+                <button className="btn">Download CV <AiOutlineFilePdf /> </button>
             </div>
             <div className="nav-menu-btn">
-                Menu nav
+                <FiMenu className="fimenu" />
             </div>
         </div>
      );
