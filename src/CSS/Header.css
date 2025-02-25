@@ -7,18 +7,19 @@
     justify-content: space-between;
     background: var( --body-color);
     width: 100%;
-    height:10%;
+    height:90px;
     line-height: 90px;
     padding-inline: var(--padding-inline);
+    transition: .3s;
   }
   .nav-logo {
     position: relative;
   }
   .nav-name {
-    font-size: 24px;
+    font-size: 30px;
     font-weight: 600;
-    letter-spacing: 1px;
     color: var(--text-color-third);
+    letter-spacing: 1px;
     white-space: nowrap;
   }
   .nav-menu, ul{
@@ -54,7 +55,7 @@
   .nav-btn {
     white-space: nowrap;
   }
-  .nav-menu-btn {
+  .nav-menu-dropdown {
     display: none;
   }
   .fimenu {
@@ -66,17 +67,35 @@
     .nav-menu {
       display: none;
     }
+    .active-link{
+      position: none;
+    }
     .nav-btn {
       display: none;
     }
-    .nav-menu-btn {
+    .nav-menu-dropdown {
       display: flex;
       justify-content: center;
       align-items: center;
-    } 
+    }
     .fimenu {
-      margin-top: 25px;
+      margin-top: 40px;
+      font-size: 28px;
     } 
+    .dropdown-menu .menu-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      border-radius: 10px;
+      top: 75px;
+      right: 0; 
+      padding: 0px;
+      margin-right: var(--padding-inline);
+      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+      background: rgba(255, 255, 255, 0.7); 
+      backdrop-filter: blur(10px); /* Glassmorphism effect */
+    }
   }
 
   @media only screen and (max-width: 320px) {

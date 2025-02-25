@@ -15,6 +15,7 @@
   --first-shadow-color: rgba(0, 0, 0, 0.1);
 
   --padding-inline: 6vw;
+  --padding-page: 3vw;
 }
 
 *{
@@ -30,7 +31,6 @@ html{
 
 body{
   background: var(--body-color);
-  /* margin: 30px; */
 }
 
 .container{
@@ -47,10 +47,6 @@ body{
   cursor: pointer;
   transition: .4s;
 }
-
-/* .btn>i{
-  margin-left: 10px;
-} */
  
 .btn:hover{
   background: var(--second-color);
