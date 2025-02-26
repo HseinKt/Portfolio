@@ -63,7 +63,7 @@
     cursor: pointer;
   }
   
-  @media only screen and (max-width: 1105px) {
+  @media only screen and (max-width: 1115px) {
     .nav-menu {
       display: none;
     }
