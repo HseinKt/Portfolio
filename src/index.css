@@ -67,3 +67,11 @@ body{
   font-size: 24px;
   margin-top: 20px;
 }
+
+.main-wrapper {
+  padding-inline: 10vw;
+}
+
+.section {
+  padding-block: 5em;
+}

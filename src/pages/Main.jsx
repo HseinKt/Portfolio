@@ -11,11 +11,11 @@ const Main = () => {
         <div className="container">
             <Header />
             <div className="main-wrapper">
-                <section id="home"><Home /></section>
-                <section id="about"><About /></section>
-                <section id="projects"><Projects /></section>
-                <section id="experience"><Experience /></section>
-                <section id="contact"><Contact /></section>
+                <section id="home" className="section"><Home /></section>
+                <section id="about" className="section"><About /></section>
+                <section id="projects" className="section"><Projects /></section>
+                <section id="experience" className="section"><Experience /></section>
+                <section id="contact" className="section"><Contact /></section>
             </div>
             <Footer />
         </div>

@@ -33,7 +33,6 @@ const Footer = () => {
 
             <div className="bottom-footer">
                 <p>Copyright &copy; <a href="#home" >Hussein Kteish</a> - All rights reserved</p> 
-                {/*style="text-decoration: none;"*/}
             </div>
         </footer>
      );
