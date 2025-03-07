@@ -3,9 +3,9 @@
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    min-height: 80vh;
-    width: 50%;
-    padding-left: 20px;
+        min-height: 80vh;
+        width: 50%;
+        padding-left: 20px;
 }
 .featured-text-card span{
     background: var(--third-color);
@@ -44,4 +44,28 @@
     display: flex;
     gap: 30px;
     margin-top: 5em;
+}
+
+.featured-image {
+    display: flex;
+    justify-content: right;
+    align-content: center;
+    min-height: 80vh;
+    padding-left: 20px;
+    width: 50%;
+}
+.featured-image img {
+    width: 380px;
+    height: 380px;
+    border-radius: 55% 45% 55% 45%;
+    margin: auto 0;
+    overflow: hidden;
+    animation: imgFloat 7s ease-in-out infinite;
+    object-fit: cover;
+}
+@keyframes imgFloat {
+    50%{
+        /* transform: translateY(10px); */
+        border-radius: 45% 55% 45% 55%;
+    }
 }

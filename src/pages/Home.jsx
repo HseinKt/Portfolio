@@ -58,7 +58,7 @@ const Home = () => {
             </div>
 
             <div className="featured-image">
-                Image
+                <img src="/images/avatar.jpg" alt="avatar"/>
             </div>
         </>
      );
