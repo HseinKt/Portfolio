@@ -11,7 +11,7 @@ const Main = () => {
         <div className="container">
             <Header />
             <div className="main-wrapper">
-                <section id="home" className="section"><Home /></section>
+                <section id="home" className="featured-box"><Home /></section>
                 <section id="about" className="section"><About /></section>
                 <section id="projects" className="section"><Projects /></section>
                 <section id="experience" className="section"><Experience /></section>
