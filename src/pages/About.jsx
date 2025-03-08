@@ -48,7 +48,8 @@ const About = () => {
 
                     <div className="skills-box">
                         <div className="skills-header">
-                            <h3>Tools</h3>                        </div>
+                            <h3>Tools</h3>                        
+                        </div>
                         <div className="skills-list">
                             <span>Git</span>
                             <span>GitHub</span>                    
