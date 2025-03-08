@@ -24,7 +24,7 @@ const Home = () => {
                 </div>
                 <div className="featured-name">
                     <p>I'm {" "}
-                        <span className="typedText">
+                        {/* <span className="typedText">
                             <Typewriter 
                                 words={["a Junior Frontend Developer", "a React.js Enthusiast", "a UI/UX Designer"]}
                                 loop={0} //Infinite loop
@@ -34,7 +34,7 @@ const Home = () => {
                                 deleteSpeed={100}
                                 delaySpeed={1000}
                             />
-                        </span>
+                        </span>  */}
                     </p>
                 </div>
                 <div className="featured-text-info">
