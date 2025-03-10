@@ -11,6 +11,7 @@
     line-height: 90px;
     padding-inline: var(--padding-inline);
     transition: .3s;
+    z-index: 1000; /* Ensures navbar is always on top */
   }
   .nav-logo {
     position: relative;
