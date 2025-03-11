@@ -1,0 +1,43 @@
+.experience-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1em;
+    width: 100%;
+}
+.experience-box {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    width: 32%;
+    margin-bottom: 2em;
+    padding-inline: 15px;
+    padding-block: 25px;
+    border: 1px solid  rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 2px var(--first-shadow-color);
+    transition: transform 0.5s ease-in-out;
+}
+.experience-box:hover {
+    transform: translateY(-7px);
+    border: 1px solid var(--text-color-third);
+}
+.experience-box h3 {
+    display: flex;
+    justify-content: center;
+    color: var(--text-color-third);
+}
+.experience-box .experience-role {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #555;
+}
+.experience-box p {
+    line-height: 1.5;
+    color: #777;
+    text-align: center;
+    margin-bottom: 5px;
+}
