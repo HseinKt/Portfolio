@@ -9,7 +9,7 @@ const Projects = () => {
             <div className="project-container">
                 <div className="project-box">
                     <div className="project-image">
-                        <img src="/images/ReactJS image 1.jpg" alt="Project 1" />
+                        <img src="/images/Fruit_Recognetion.webp" alt="Project 1" />
                         <div className="project-overlay">
                             <a href="https://github.com/HseinKt/Fruit-Recognition.git" className="link" target="_blank" rel="noopener noreferre">
                                 🔗
@@ -24,7 +24,7 @@ const Projects = () => {
 
                 <div className="project-box">
                     <div className="project-image">
-                        <img src="/images/ReactJS image 1.jpg" alt="Project 2" />
+                        <img src="/images/dating-app.jpg" alt="Project 2" />
                         <div className="project-overlay">
                             <a href="https://github.com/HseinKt/datingapp.git" className="link" target="_blank" rel="noopener noreferre">
                                 🔗
@@ -39,7 +39,7 @@ const Projects = () => {
 
                  <div className="project-box">
                     <div className="project-image">
-                        <img src="/images/ReactJS image 1.jpg" alt="Project 3" />
+                        <img src="/images/TODO.jpg" alt="Project 3" />
                         <div className="project-overlay">
                             <a href="https://github.com/HseinKt/Todo-list.git" className="link" target="_blank" rel="noopener noreferre">
                                 🔗
