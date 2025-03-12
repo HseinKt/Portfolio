@@ -1,6 +1,7 @@
 .top-header {
     text-align: center;
     margin-bottom: 5em;
+    margin-top: 2em;
 }
 .top-header h1 {
     color: var(--text-color-second);

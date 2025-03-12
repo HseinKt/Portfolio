@@ -77,10 +77,8 @@ body{
 }
 
 .featured-box {
-  /* position: relative;*/
   display: flex;
   flex-direction: row;
   height: 100vh;
   min-height: 700px;
-  /* padding-block: 5em; */
 }
