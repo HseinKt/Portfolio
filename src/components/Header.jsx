@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import '../CSS/Header.css'
 import { FiMenu } from "react-icons/fi";
 import { motion } from "framer-motion"
@@ -7,6 +7,7 @@ import DownloadCV from "./DownloadCV";
 const Header = () => {
     const [active, setActive] = useState("Home");
     const [isOpen, setIsOpen] = useState(false);
+    const [shadow, setShadow] = useState(false);
 
     const handleClick = (section) => {
         setActive(section);
@@ -17,8 +18,21 @@ const Header = () => {
         setIsOpen(!isOpen);
     }
 
+    useEffect(() => {
+        const handleScroll = () => {
+            if(window.scrollY > 50)
+            {
+                setShadow(true);
+            } else {
+                setShadow(false);
+            }
+        }
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll)
+    }, []);
+
     return ( 
-        <div className="nav">
+        <div className={`nav ${shadow ? "nav-shadow" : ""}`}>
             <div className="nav-logo">
                 <p className="nav-name">Hussein Kteish</p>
             </div>
