@@ -1,13 +1,11 @@
-import { AiOutlineFilePdf } from "react-icons/ai";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import '../CSS/Home.css';
 import React from "react";
 import { Typewriter } from "react-simple-typewriter";
+import DownloadCV from "../components/DownloadCV";
 
 const Home = () => {
-
-    const cvURL = "../public/Hussein_Kteish_Resume.pdf"
-
+    
     const openLinkedIn = () => {
         window.open("https://www.linkedin.com/in/hsein-kteish-287783212/");
     }
@@ -46,9 +44,7 @@ const Home = () => {
                     <a href="#contact">
                         <button className="btn blue-btn">Hire Me </button>
                     </a>
-                    <a href={cvURL} download>
-                        <button className="btn">Download CV <AiOutlineFilePdf /> </button>
-                    </a>                
+                    <DownloadCV />               
                 </div>
 
                 <div className="social_icons">

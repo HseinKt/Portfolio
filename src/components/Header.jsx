@@ -1,8 +1,8 @@
 import { useState } from "react";
 import '../CSS/Header.css'
-import { AiOutlineFilePdf } from "react-icons/ai";
 import { FiMenu } from "react-icons/fi";
 import { motion } from "framer-motion"
+import DownloadCV from "./DownloadCV";
 
 const Header = () => {
     const [active, setActive] = useState("Home");
@@ -16,9 +16,6 @@ const Header = () => {
         setActive(section);
         setIsOpen(!isOpen);
     }
-
-    // const cvURL = "https://github.com/HseinKt/Portfolio/raw/main/public/Hussein%20Kteish_Resume.pdf";
-    const cvURL = "../public/Hussein_Kteish_Resume.pdf"
 
     return ( 
         <div className="nav">
@@ -42,9 +39,7 @@ const Header = () => {
             </div>
 
             <div className="nav-btn">
-                <a href={cvURL} download>
-                    <button className="btn">Download CV <AiOutlineFilePdf /> </button>
-                </a>
+                <DownloadCV />
             </div>
 
             <div className="nav-menu-dropdown">
