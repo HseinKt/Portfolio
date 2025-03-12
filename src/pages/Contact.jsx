@@ -1,14 +1,29 @@
 import { CornerRightDown, Mail, Phone } from 'lucide-react';
 import '../CSS/Contact.css'
-import { MdEmail } from 'react-icons/md';
+import { MdSend } from 'react-icons/md';
+import { useState } from 'react';
 const Contact = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        description: ''
+    })
+    
+    const handleChange = (e) => {
+        setFormData({...formData, [e.target.name]: e.target.value})
+    }
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(formData);
+
+    }
+
     return ( 
         <>
             <div className="top-header">
                 <h1>Get in touch</h1>
                 <p>Do you have a project in your mind, contact me here</p>
-                <button class="button">Click Me</button>
-
             </div>
             <div className='row'>
                 <div className='col'>
@@ -20,11 +35,46 @@ const Contact = () => {
                 </div>
 
                 <div className='col'>
-                    <form>
-                        <input type="text" placeholder="Name" />
-                        <input type="email" placeholder="Email" />
-                        <textarea placeholder="Message" rows="5"></textarea>
-                        <button className="btn blue-btn">Send</button>
+                    <form onSubmit={handleSubmit} className='form-control'>
+                        <div className='form-inputs'>
+                            <input 
+                                type="text" 
+                                id='Name' 
+                                placeholder="Name" 
+                                className='input-field' 
+                                name='name' 
+                                value={formData.name}
+                                onChange={handleChange}
+                                required
+                            />
+                            <input 
+                                type="email" 
+                                id='Email' 
+                                placeholder="Email" 
+                                className='input-field' 
+                                name='email' 
+                                value={formData.email}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+
+                        <div className='text-area'>
+                            <textarea 
+                                id='Description' 
+                                placeholder="Message" 
+                                name='description' 
+                                value={formData.description} 
+                                onChange={handleChange}
+                                required
+                            ></textarea>
+                        </div>
+                        
+                        <div className='form-button'>
+                            <button type='submit' className="btn" >
+                                Send <MdSend className='send-icon'/> 
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
