@@ -1,3 +1,4 @@
+import DarkMode from "../components/DarkMode";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import About from "./About";
@@ -9,6 +10,7 @@ import Projects from "./Projects";
 const Main = () => {
     return ( 
         <div className="container">
+            <DarkMode />
             <Header />
             <div className="main-wrapper">
                 <section id="home" className="featured-box"><Home /></section>

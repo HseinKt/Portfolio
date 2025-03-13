@@ -40,8 +40,7 @@ const Header = () => {
                 }
             });
             setActive(currentSection);
-            
-            }
+        }
 
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll)

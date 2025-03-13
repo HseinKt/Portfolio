@@ -7,9 +7,14 @@ import Experience from './pages/Experience';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 import NotFound from './components/NotFound';
+import { DarkModeContext } from './hooks/DarkModeCOntext';
+import { useContext } from 'react';
 
 const App = () => {
+    const {isDarkMode} = useContext(DarkModeContext);
+    
     return ( 
+        <div className={isDarkMode? "dark-mode": "light-mode"}>
         <Router>
             <Routes>
                 <Route path="/" element={<Main />} />
@@ -21,6 +26,7 @@ const App = () => {
                 <Route path='*' element={<NotFound />} />
             </Routes>
         </Router>
+        </div>
      );
 }
  
