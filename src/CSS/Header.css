@@ -14,7 +14,7 @@
     z-index: 1000; /* Ensures navbar is always on top */
   }
   .nav-shadow {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px var(--first-shadow-color);
     height:75px;
     line-height: 80px;
   }

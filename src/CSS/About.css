@@ -28,7 +28,7 @@
     padding-inline: 20px;
     background: var(--color-white);
     border-radius: 15px;
-    box-shadow: 0 10px 10px var(--first-shadow-color);
+    box-shadow: 0 5px 7px var(--first-shadow-color);
 }
 h3 {
     color: var(--text-color-second);
