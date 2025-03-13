@@ -9,6 +9,8 @@ const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [shadow, setShadow] = useState(false);
 
+    const sections = ["Home", "About", "Projects", "Experience", "Contact"];
+
     const handleClick = (section) => {
         setActive(section);
     }
@@ -26,7 +28,21 @@ const Header = () => {
             } else {
                 setShadow(false);
             }
-        }
+
+            let currentSection = "Home";
+            sections.forEach((section) => {
+                const sectionElement = document.getElementById(section.toLowerCase());
+                if(sectionElement) {
+                    const rect = sectionElement.getBoundingClientRect();
+                    if(rect.top <= 150 && rect.bottom >= 150) {
+                        currentSection = section;
+                    }
+                }
+            });
+            setActive(currentSection);
+            
+            }
+
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll)
     }, []);
@@ -39,7 +55,7 @@ const Header = () => {
 
             <div className="nav-menu">
                 <ul>
-                    {["Home", "About", "Projects", "Experience", "Contact"].map((section) => (
+                    {sections.map((section) => (
                         <li key={section}>
                             <a 
                                 href={`#${section.toLowerCase()}`} 
