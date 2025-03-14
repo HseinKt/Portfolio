@@ -1,14 +1,20 @@
 import { AiOutlineFilePdf } from "react-icons/ai";
 import '../CSS/About.css';
+import { motion } from "framer-motion"
 
 const About = () => {
     const cvURL = "../public/Hussein_Kteish_Resume.pdf"
 
     return ( 
         <>
-            <div className="top-header">
+            <motion.div 
+                initial={{ opacity: 0 , y: -70}}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2}}
+                className="top-header"
+            >
                 <h1>About Me</h1>
-            </div>
+            </motion.div>
             <div className="row">
                 <div className="col">
                     <div className="about-info">
@@ -64,26 +70,3 @@ const About = () => {
 }
  
 export default About;
-
-
-{/* <h3>Skills & Experiences</h3>
-<ul>
-    <li>React.js</li>
-    <li>JavaScript</li>
-    <li>UI/UX Design</li>
-    <li>HTML5</li>
-    <li>CSS3</li>
-    <li>SASS</li>
-    <li>Bootstrap</li>
-    <li>Responsive Design</li>
-    <li>Git</li>
-    <li>Version Control</li>
-    <li>Agile Methodologies</li>
-    <li>Software Development</li>
-    <li>Project Management</li>
-</ul>
- <h3>Education</h3>
-<ul>
-    <li>BSc Computer Science, University of Jordan</li>
-    <li>Certified Scrum Master, Scrum Alliance</li>
-</ul>  */}

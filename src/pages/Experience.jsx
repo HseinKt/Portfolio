@@ -1,10 +1,17 @@
 import '../CSS/Experience.css'
+import { motion } from "framer-motion"
+
 const Experience = () => {
     return ( 
         <>
-            <div className="top-header">
+            <motion.div 
+                initial={{ opacity: 0 , y: -70}}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2}}
+                className="top-header"
+            >
                 <h1>Experience</h1>
-            </div>
+            </motion.div>
             <div className="experience-container">
                 <div className="experience-box">
                     <h3>📚 Coding Instructor</h3>

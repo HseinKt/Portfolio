@@ -1,11 +1,17 @@
 import '../CSS/Projects.css'
+import { motion } from "framer-motion"
 
 const Projects = () => {
     return ( 
         <>
-            <div className="top-header">
+            <motion.div 
+                initial={{ opacity: 0 , y: -70}}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2}}
+                className="top-header"
+            >
                 <h1>Projects</h1>
-            </div>
+            </motion.div>
             <div className="project-container">
                 <div className="project-box">
                     <div className="project-image">

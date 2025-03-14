@@ -3,6 +3,8 @@ import '../CSS/Contact.css'
 import { MdSend } from 'react-icons/md';
 import { useState } from 'react';
 import emailjs  from 'emailjs-com';
+import { motion } from "framer-motion"
+
 const Contact = () => {
     const [formData, setFormData] = useState({
         name: '',
@@ -35,10 +37,15 @@ const Contact = () => {
 
     return ( 
         <>
-            <div className="top-header">
+            <motion.div 
+                initial={{ opacity: 0 , y: -70}}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2}}
+                className="top-header"
+            >
                 <h1>Get in touch</h1>
                 <p>Do you have a project in your mind, contact me here</p>
-            </div>
+            </motion.div>
             <div className='row'>
                 <div className='col'>
                     <div className="contact-info">

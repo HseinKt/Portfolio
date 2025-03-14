@@ -3,6 +3,7 @@ import '../CSS/Home.css';
 import React from "react";
 import { Typewriter } from "react-simple-typewriter";
 import DownloadCV from "../components/DownloadCV";
+import { motion } from "framer-motion"
 
 const Home = () => {
     
