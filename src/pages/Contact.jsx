@@ -2,11 +2,12 @@ import { CornerRightDown, Mail, Phone } from 'lucide-react';
 import '../CSS/Contact.css'
 import { MdSend } from 'react-icons/md';
 import { useState } from 'react';
+import emailjs  from 'emailjs-com';
 const Contact = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        description: ''
+        message: ''
     })
     
     const handleChange = (e) => {
@@ -15,8 +16,21 @@ const Contact = () => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formData);
 
+        const serviceID = "service_r26lurf";
+        const templateID = "template_btw5a1w";
+        const userID = "DQ6BjSCdBqcdkzYY7";
+
+        emailjs.send(serviceID, templateID, formData, userID)
+        .then((response) => {
+            console.log("Email sent successfully!", response.status, response.text);
+            alert("Message sent successfully!");
+            setFormData({ name: '', email: '', message: '' }); // Clear form
+        })
+        .catch((error) => {
+            console.error("Email sending failed:", error);
+            alert("Failed to send message. Please try again.");
+        });
     }
 
     return ( 
@@ -61,10 +75,10 @@ const Contact = () => {
 
                         <div className='text-area'>
                             <textarea 
-                                id='Description' 
+                                id='Message' 
                                 placeholder="Message" 
-                                name='description' 
-                                value={formData.description} 
+                                name='message' 
+                                value={formData.message} 
                                 onChange={handleChange}
                                 required
                             ></textarea>
