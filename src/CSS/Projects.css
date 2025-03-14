@@ -67,9 +67,23 @@
     text-align: center;
     margin-bottom: 5px;
 }
- .project-details a {
-    color: var(--first-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
 
+@media only screen and (max-width: 990px){
+    .project-container {
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: 10px;
+    }
+    .project-box {
+        width: 80%;
+    }  
+    .project-details {
+        margin-inline: 0.5em;
+        top: -35px;
+    }
+    .project-details p {
+        line-height: 1.4;
+        font-size: 15px;
+    }
+}

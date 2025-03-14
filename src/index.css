@@ -127,3 +127,15 @@ body{
 .dark-mode-toggle:hover {
   color: #969393;
 }
+
+@media only screen and (max-width: 990px) {
+  .featured-box {
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+  }
+  .btn{
+    font-weight: 100;
+    padding: 10px 15px;
+  }
+}

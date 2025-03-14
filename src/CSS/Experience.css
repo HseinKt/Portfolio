@@ -41,3 +41,20 @@
     text-align: center;
     margin-bottom: 5px;
 }
+
+@media only screen and (max-width: 990px) {
+    .experience-container {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 10px;
+    }
+    .experience-box {
+        width: 80%;
+    }
+    .experience-box p {
+        line-height: 1.4;
+        font-size: 15px;        
+        margin-bottom: 1px;
+    }
+}

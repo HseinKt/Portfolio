@@ -1,4 +1,3 @@
-/* Footer */
 footer {
     display: flex;
     flex-direction: column;
@@ -50,4 +49,32 @@ footer {
 }
 .bottom-footer a{
     text-decoration: none;
+}
+
+@media only screen and (max-width: 990px){
+    footer {
+        row-gap: 25px;
+        padding-block: 30px 40px;
+    }
+    .top-footer p{
+        font-size: 24px;
+        font-weight: 500;
+    }
+    .middle-footer ul{
+        flex-wrap: wrap;
+    }
+    .middle-footer ul li{
+        margin-top: 5px;
+    }
+    .footer-social-icons{
+        gap: 20px;
+    }
+    .icon{
+        width: 35px;
+        height: 35px;
+    }
+    .bottom-footer{
+        font-size: 13px;
+        margin-top: 5px;
+    }
 }
