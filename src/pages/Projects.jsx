@@ -7,7 +7,7 @@ const Projects = () => {
             <motion.div 
                 initial={{ opacity: 0 , y: -70}}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2}}
+                transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4}}
                 className="top-header"
             >
                 <h1>Projects</h1>

@@ -18,10 +18,21 @@ const Home = () => {
     return ( 
         <>
             <div className="featured-text">
-                <div className="featured-text-card">
+                <motion.div 
+                    initial={{ opacity: 0 , y: -70}}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4}}
+                    className="featured-text-card"
+                >
                     <span>Hussein kteish</span>
-                </div>
-                <div className="featured-name">
+                </motion.div>
+
+                <motion.div 
+                    initial={{ opacity: 0 , y: -70}}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4}}
+                    className="featured-name"
+                >
                     <p>I'm {" "}
                         <span className="typedText">
                             <Typewriter 
@@ -35,27 +46,58 @@ const Home = () => {
                             />
                         </span> 
                     </p>
-                </div>
-                <div className="featured-text-info">
+                </motion.div>
+
+                <motion.div 
+                    initial={{ opacity: 0 , y: -70}}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4}}
+                    className="featured-text-info"
+                >
                     <p>
                         Junior Frontend Developer | React.js Enthusiast | UI/UX Focused | Passionate About Building Interactive Web Apps         
                     </p>
-                </div>
-                <div className="featured-text-btn">
+                </motion.div>
+
+                <motion.div 
+                    initial={{ opacity: 0 , y: -70}}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4}}
+                    className="featured-text-btn"
+                >
                     <a href="#contact">
                         <button className="btn blue-btn">Hire Me </button>
                     </a>
                     <DownloadCV />               
-                </div>
+                </motion.div>
 
                 <div className="social_icons">
-                    <FaLinkedin className="icon linkedInIcon" onClick={() => openLinkedIn()}/>
-                    <FaGithub className="icon GitHubIcon" onClick={() => openGithub()}/>
+                    <motion.div 
+                        initial={{ x: -100 , opacity: 0}}
+                        whileInView={{ x: 0, opacity: 1}}
+                        transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4}}
+                    >
+                        <FaLinkedin className="icon linkedInIcon" onClick={() => openLinkedIn()}/>
+                    </motion.div>
+                    
+                    <motion.div 
+                        initial={{ x: -200 , opacity: 0}}
+                        whileInView={{ x: 0, opacity: 1}}
+                        transition={{ duration: 0.6, ease: 'easeOut', delay: 0.3}}
+                    >
+                        <FaGithub className="icon GitHubIcon" onClick={() => openGithub()}/>
+                    </motion.div>
                 </div>
             </div>
 
             <div className="featured-image">
-                <img src="/images/avatar.jpg" alt="avatar"/>
+                <motion.img 
+                    src="/images/avatar.jpg" 
+                    alt="avatar" 
+                    initial={{ scale: 1 }} 
+                    whileHover={{ scale: 1.4 }}
+                    transition={{ duration: 0.7, ease: "easeInOut" }} 
+                />
             </div>
         </>
      );
