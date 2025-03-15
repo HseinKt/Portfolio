@@ -40,22 +40,33 @@ const Contact = () => {
             <motion.div 
                 initial={{ opacity: 0 , y: -70}}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4}}
+                transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4    }}
                 className="top-header"
             >
                 <h1>Get in touch</h1>
                 <p>Do you have a project in your mind, contact me here</p>
             </motion.div>
+
             <div className='row'>
-                <div className='col'>
+                <motion.div 
+                    initial={{ x: -100 , opacity: 0}}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.6, ease: 'easeOut', delay: 0.5 }}
+                    className="col"
+                >
                     <div className="contact-info">
                         <h2>Find Me <CornerRightDown className='contact-icon'/> </h2>
                         <p> <Mail className='contact-icon' /> Email: hseinkteish21@gmail.com</p>
                         <p> <Phone className='contact-icon'/> Tel: +961 76 626 035</p>
                     </div>
-                </div>
+                </motion.div>
 
-                <div className='col'>
+                <motion.div 
+                    initial={{ x: 100 , opacity: 0}}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.6, ease: 'easeOut', delay: 0.5 }}
+                    className='col'
+                >
                     <form onSubmit={handleSubmit} className='form-control'>
                         <div className='form-inputs'>
                             <input 
@@ -68,6 +79,7 @@ const Contact = () => {
                                 onChange={handleChange}
                                 required
                             />
+                            
                             <input 
                                 type="email" 
                                 id='Email' 
@@ -97,7 +109,7 @@ const Contact = () => {
                             </button>
                         </div>
                     </form>
-                </div>
+                </motion.div>
             </div>
         </>
      );
