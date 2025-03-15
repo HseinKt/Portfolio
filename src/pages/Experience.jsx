@@ -12,7 +12,13 @@ const Experience = () => {
             >
                 <h1>Experience</h1>
             </motion.div>
-            <div className="experience-container">
+            
+            <motion.div 
+                initial={{ x: -100 , opacity: 0}}
+                whileInView={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.6, ease: 'easeOut', delay: 0.5 }}
+                className="experience-container"
+            >
                 <div className="experience-box">
                     <h3>📚 Coding Instructor</h3>
                     <p className="experience-role">BrightChamps, India (Remote)</p>
@@ -30,7 +36,7 @@ const Experience = () => {
                     <p className="experience-role">Freelance</p>
                     <p>Designed and built web applications using React.js, Laravel, and MySQL. Worked closely with clients to develop custom solutions under tight deadlines.</p>
                 </div>
-            </div>
+            </motion.div>
         </>
      );
 }
