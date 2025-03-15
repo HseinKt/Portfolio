@@ -40,7 +40,7 @@ const Contact = () => {
             <motion.div 
                 initial={{ opacity: 0 , y: -70}}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4    }}
+                transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}
                 className="top-header"
             >
                 <h1>Get in touch</h1>
@@ -79,7 +79,7 @@ const Contact = () => {
                                 onChange={handleChange}
                                 required
                             />
-                            
+
                             <input 
                                 type="email" 
                                 id='Email' 
