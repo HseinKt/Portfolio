@@ -5,7 +5,7 @@ const Projects = () => {
     return ( 
         <>
             <motion.div 
-                initial={{ opacity: 0 , y: -70}}
+                initial={{ opacity: 0 , y: -70 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4}}
                 className="top-header"
@@ -13,7 +13,12 @@ const Projects = () => {
                 <h1>Projects</h1>
             </motion.div>
             <div className="project-container">
-                <div className="project-box">
+                <motion.div 
+                    initial={{ opacity: 0 , y: -50 }}
+                    whileInView={{ opacity: 1 , y:0 }}
+                    transition={{ duration: 0.7, ease: 'easeOut', delay: 0.5}}
+                    className="project-box"
+                >
                     <div className="project-image">
                         <img src="/images/Fruit_Recognetion.webp" alt="Project 1" />
                         <div className="project-overlay">
@@ -26,9 +31,14 @@ const Projects = () => {
                         <h3>Fruit Recognition App</h3>
                         <p>Built a mobile app using deep learning to identify fruits from images. Developed with Java and AI-powered models.</p>
                     </div>
-                </div>
+                </motion.div>
 
-                <div className="project-box">
+                <motion.div 
+                    initial={{ opacity: 0 , y: -50 }}
+                    whileInView={{ opacity: 1 , y:0 }}
+                    transition={{ duration: 0.7, ease: 'easeOut', delay: 0.7}}
+                    className="project-box"
+                >
                     <div className="project-image">
                         <img src="/images/dating-app.jpg" alt="Project 2" />
                         <div className="project-overlay">
@@ -41,9 +51,14 @@ const Projects = () => {
                         <h3>Dating App</h3>
                         <p>Developed a full-stack dating platform using Laravel and React.js. Implemented authentication, chat, and profile matching.</p>
                     </div>
-                </div>
+                </motion.div>
 
-                 <div className="project-box">
+                <motion.div 
+                    initial={{ opacity: 0 , y: -50 }}
+                    whileInView={{ opacity: 1 , y:0 }}
+                    transition={{ duration: 0.7, ease: 'easeOut', delay: 0.9}}
+                    className="project-box"
+                >
                     <div className="project-image">
                         <img src="/images/TODO.jpg" alt="Project 3" />
                         <div className="project-overlay">
@@ -56,7 +71,7 @@ const Projects = () => {
                         <h3>ListToDo App</h3>
                         <p>A modern task manager built with React.js, featuring a theme switcher, state management, and a user-friendly UI.</p>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </>
      );
