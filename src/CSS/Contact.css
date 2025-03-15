@@ -99,3 +99,17 @@ textarea {
     font-size: 15px;
     rotate: -45deg;
 }
+.success-message {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(76, 174, 79, 0.7); 
+    backdrop-filter: blur(10px);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 1000;
+}

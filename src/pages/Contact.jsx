@@ -6,7 +6,8 @@ import emailjs  from 'emailjs-com';
 import { motion } from "framer-motion"
 
 const Contact = () => {
-    const [formData, setFormData] = useState({
+    const [ successMessage, setSuccessMessage ] = useState("");
+    const [ formData, setFormData ] = useState({
         name: '',
         email: '',
         message: ''
@@ -26,8 +27,12 @@ const Contact = () => {
         emailjs.send(serviceID, templateID, formData, userID)
         .then((response) => {
             console.log("Email sent successfully!", response.status, response.text);
-            alert("Message sent successfully!");
             setFormData({ name: '', email: '', message: '' }); // Clear form
+            setSuccessMessage("Message sent successfully! ✅");
+            
+            setTimeout(() => {
+                setSuccessMessage("");
+            }, 3000)
         })
         .catch((error) => {
             console.error("Email sending failed:", error);
@@ -37,6 +42,7 @@ const Contact = () => {
 
     return ( 
         <>
+            {successMessage && <div className='success-message'>{successMessage}</div>}
             <motion.div 
                 initial={{ opacity: 0 , y: -70}}
                 whileInView={{ opacity: 1, y: 0 }}
