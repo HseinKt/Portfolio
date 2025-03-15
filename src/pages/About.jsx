@@ -16,7 +16,12 @@ const About = () => {
                 <h1>About Me</h1>
             </motion.div>
             <div className="row">
-                <div className="col">
+                <motion.div 
+                    initial={{ x: -100 , opacity: 0}}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.6, ease: 'easeOut', delay: 0.5 }}
+                    className="col"
+                >
                     <div className="about-info">
                         <h3>My introduction</h3>
                         <p>Junior Front-End Developer passionate about crafting interactive and user-friendly web applications. Proficient in React.js, JavaScript, and UI/UX design, with hands-on experience developing scalable and responsive web solutions. Enthusiastic about learning new technologies, collaborating with teams, and enhancing user experiences through innovative design and functionality.</p>
@@ -26,8 +31,14 @@ const About = () => {
                             </a>
                         </div>
                     </div>
-                </div>
-                <div className="col skill-col">
+                </motion.div>
+
+                <motion.div 
+                    initial={{ x: 100 , opacity: 0}}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.6, ease: 'easeOut', delay: 0.5 }}
+                    className="col skill-col"
+                >
                     <div className="skills-box">
                         <div className="skills-header">
                             <h3>Frontend</h3>
@@ -63,7 +74,7 @@ const About = () => {
                             <span>Figma</span>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </>
      );
