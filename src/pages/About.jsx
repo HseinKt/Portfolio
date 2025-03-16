@@ -3,7 +3,7 @@ import '../CSS/About.css';
 import { motion } from "framer-motion"
 
 const About = () => {
-    const cvURL = "../public/Hussein_Kteish_Resume.pdf"
+    const cvURL = "/Portfolio/Hussein_Kteish_Resume.pdf"
 
     return ( 
         <>
@@ -26,7 +26,7 @@ const About = () => {
                         <h3>My introduction</h3>
                         <p>Junior Front-End Developer passionate about crafting interactive and user-friendly web applications. Proficient in React.js, JavaScript, and UI/UX design, with hands-on experience developing scalable and responsive web solutions. Enthusiastic about learning new technologies, collaborating with teams, and enhancing user experiences through innovative design and functionality.</p>
                         <div className="about-btn">
-                            <a href={cvURL} download>
+                            <a href={cvURL} download="Hussein_Kteish_Resume.pdf">
                                 <button className="btn blue-btn">Download CV <AiOutlineFilePdf /> </button>
                             </a>
                         </div>
