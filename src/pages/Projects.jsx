@@ -20,7 +20,7 @@ const Projects = () => {
                     className="project-box"
                 >
                     <div className="project-image">
-                        <img src="/images/Fruit_Recognetion.webp" alt="Project 1" />
+                        <img src="/Portfolio/images/Fruit_Recognetion.webp" alt="Project 1" />
                         <div className="project-overlay">
                             <a href="https://github.com/HseinKt/Fruit-Recognition.git" className="link" target="_blank" rel="noopener noreferre">
                                 🔗
@@ -40,7 +40,7 @@ const Projects = () => {
                     className="project-box"
                 >
                     <div className="project-image">
-                        <img src="/images/dating-app.jpg" alt="Project 2" />
+                        <img src="/Portfolio/images/dating-app.jpg" alt="Project 2" />
                         <div className="project-overlay">
                             <a href="https://github.com/HseinKt/datingapp.git" className="link" target="_blank" rel="noopener noreferre">
                                 🔗
@@ -60,7 +60,7 @@ const Projects = () => {
                     className="project-box"
                 >
                     <div className="project-image">
-                        <img src="/images/TODO.jpg" alt="Project 3" />
+                        <img src="/Portfolio/images/TODO.jpg" alt="Project 3" />
                         <div className="project-overlay">
                             <a href="https://github.com/HseinKt/Todo-list.git" className="link" target="_blank" rel="noopener noreferre">
                                 🔗

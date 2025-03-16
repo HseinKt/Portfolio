@@ -1,4 +1,4 @@
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import Main from './pages/Main';
 import Home from './pages/Home';
@@ -15,7 +15,6 @@ const App = () => {
     
     return ( 
         <div className={isDarkMode? "dark-mode": "light-mode"}>
-        <Router>
             <Routes>
                 <Route path="/" element={<Main />} />
                 <Route path='/home' element={<Home />} />
@@ -25,7 +24,6 @@ const App = () => {
                 <Route path="/contact" element={<Contact />} />
                 <Route path='*' element={<NotFound />} />
             </Routes>
-        </Router>
         </div>
      );
 }

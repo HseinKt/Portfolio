@@ -87,7 +87,8 @@
         justify-content: center;
         min-height: 150px;
         width: 100%;
-        margin-top: 70px;
+        margin-top: 110px;
+        margin-bottom: 10px;
     }
     .featured-image img {
         width: 180px;
