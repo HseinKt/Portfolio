@@ -73,19 +73,30 @@ const Home = () => {
 
                 <div className="social_icons">
                     <motion.div 
-                        initial={{ x: -100 , opacity: 0}}
-                        whileInView={{ x: 0, opacity: 1}}
-                        transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4}}
+                        initial={{ opacity: 0 , y: -70}}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, ease: 'easeOut', delay: 0.6}}
                     >
-                        <FaLinkedin className="icon linkedInIcon" onClick={() => openLinkedIn()}/>
+                        <motion.div
+                            whileHover={{ y: -10 }}
+                            transition={{ duration: 0.3 }}
+                        >
+                            <FaLinkedin className="icon linkedInIcon" onClick={() => openLinkedIn()}/>
+                        </motion.div>
+                        
                     </motion.div>
                     
                     <motion.div 
-                        initial={{ x: -200 , opacity: 0}}
-                        whileInView={{ x: 0, opacity: 1}}
-                        transition={{ duration: 0.6, ease: 'easeOut', delay: 0.3}}
+                        initial={{ opacity: 0 , y: -70}}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, ease: 'easeOut', delay: 0.7}}
                     >
-                        <FaGithub className="icon GitHubIcon" onClick={() => openGithub()}/>
+                        <motion.div
+                            whileHover={{ y: -10 }}
+                            transition={{ duration: 0.3 }}
+                        >
+                            <FaGithub className="icon GitHubIcon" onClick={() => openGithub()}/>
+                        </motion.div>
                     </motion.div>
                 </div>
             </div>
