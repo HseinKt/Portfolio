@@ -50,7 +50,8 @@ const Contact = () => {
                 className="top-header"
             >
                 <h1>Get in touch</h1>
-                <p>Do you have a project in your mind, contact me here</p>
+                <p><span className='emoji'>💡</span> Do you have a project in your mind, contact me here</p>
+                <p><span className='emoji'>✍️</span> I’d love to hear your thoughts! Whether it’s feedback on my work or just a quick hello, feel free to share your message.</p>
             </motion.div>
 
             <div className='row'>

@@ -15,6 +15,7 @@ const About = () => {
             >
                 <h1>About Me</h1>
             </motion.div>
+            
             <div className="row">
                 <motion.div 
                     initial={{ x: -100 , opacity: 0}}
