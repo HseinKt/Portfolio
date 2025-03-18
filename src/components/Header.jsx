@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import '../CSS/Header.css'
 import { FiMenu } from "react-icons/fi";
 import { motion } from "framer-motion"
@@ -8,6 +8,7 @@ const Header = () => {
     const [active, setActive] = useState("Home");
     const [isOpen, setIsOpen] = useState(false);
     const [shadow, setShadow] = useState(false);
+    const menuRef = useRef(null);
 
     const sections = ["Home", "About", "Projects", "Experience", "Contact"];
 
@@ -21,9 +22,24 @@ const Header = () => {
     }
 
     useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (isOpen && menuRef.current && !menuRef.current.contains(event.target)) {
+                setIsOpen(false);
+            }
+        };
+
+        if (isOpen) {
+            document.addEventListener("mousedown", handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [isOpen]);
+
+    useEffect(() => {
         const handleScroll = () => {
-            if(window.scrollY > 50)
-            {
+            if(window.scrollY > 50) {
                 setShadow(true);
             } else {
                 setShadow(false);
@@ -39,11 +55,15 @@ const Header = () => {
                     }
                 }
             });
+            
             setActive(currentSection);
         }
 
         window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll)
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        }
     }, []);
 
     return ( 
@@ -71,7 +91,7 @@ const Header = () => {
                 <DownloadCV />
             </div>
 
-            <div className="nav-menu-dropdown">
+            <div className="nav-menu-dropdown" ref={menuRef}>
                 <a 
                     className="menu-a"
                     onClick={() => setIsOpen(!isOpen)}
