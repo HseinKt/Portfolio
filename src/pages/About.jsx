@@ -3,7 +3,7 @@ import '../CSS/About.css';
 import { motion } from "framer-motion"
 
 const About = () => {
-    const cvURL = "/Portfolio/Hussein_Kteish_Resume.pdf"
+    const cvURL = "https://drive.google.com/file/d/1R97wyrkZt8CAPu7NG-vPY28Pv_oVjoYU/view?usp=sharing"
 
     return ( 
         <>
