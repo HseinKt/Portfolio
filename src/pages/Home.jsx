@@ -8,7 +8,7 @@ import { motion } from "framer-motion"
 const Home = () => {
     
     const openLinkedIn = () => {
-        window.open("https://www.linkedin.com/in/hsein-kteish-287783212/");
+        window.open("https://www.linkedin.com/in/hussein-kteish-287783212/");
     }
     
     const openGithub = () => {
