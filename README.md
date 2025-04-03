@@ -12,7 +12,6 @@ Welcome to my **React.js Portfolio**! This project showcases my work as a **Fron
 - **🌙 Dark Mode & Light Mode** toggle using **Context API**.
 - **📱 Fully Responsive** on all devices.
 - **🔗 Social Media Integration** with clickable icons.
-- **🛠️ Projects Section** dynamically loaded from a JSON file.
 - **📧 Contact Form** with form validation.
 
 ## 🛠 Technologies Used
