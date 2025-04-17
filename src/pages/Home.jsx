@@ -103,7 +103,7 @@ const Home = () => {
 
             <div className="featured-image">
                 <motion.img 
-                    src="/Portfolio/images/avatar.jpg"  
+                    src="/Portfolio/images/avatar.jpeg"  
                     alt="avatar" 
                     initial={{ scale: 1 }} 
                     whileHover={{ scale: 1.4 }}
