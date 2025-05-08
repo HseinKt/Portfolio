@@ -48,7 +48,7 @@ npm run deploy
 ## 📬 Contact
 Feel free to connect with me:
 - 📧 Email: hseinkteish21@gmail.com
-- 💼 LinkedIn: [Your LinkedIn](https://www.linkedin.com/in/hsein-kteish-287783212/)
+- 💼 LinkedIn: [Your LinkedIn](https://www.linkedin.com/in/hussein-kteish-287783212/)
 - 🐙 GitHub: [Your GitHub](https://github.com/HseinKt)
 
 💡 **Made with ❤️ & React.js**
