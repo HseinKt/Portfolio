@@ -36,7 +36,7 @@ const Home = () => {
                     <p>I'm {" "}
                         <span className="typedText">
                             <Typewriter 
-                                words={["Junior Frontend Developer", "React.js Enthusiast", "UI/UX Designer"]}
+                                words={["Full-Stack MERN Developer", "Cybersecurity", "Semicolon Academy Ambassador"]}
                                 loop={0} //Infinite loop
                                 cursor
                                 cursorStyle="|"
@@ -55,7 +55,7 @@ const Home = () => {
                     className="featured-text-info"
                 >
                     <p>
-                        Junior Frontend Developer | React.js Enthusiast | UI/UX Focused | Passionate About Building Interactive Web Apps         
+                        Full-Stack MERN Developer with a strong interest in Cybersecurity, focused on building secure, scalable, and user-friendly web applications with modern UI/UX principles.
                     </p>
                 </motion.div>
 
