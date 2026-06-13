@@ -12,7 +12,6 @@ Welcome to my **React.js Portfolio**! This project showcases my work as a **Fron
 - **🌙 Dark Mode & Light Mode** toggle using **Context API**.
 - **📱 Fully Responsive** on all devices.
 - **🔗 Social Media Integration** with clickable icons.
-- **🛠️ Projects Section** dynamically loaded from a JSON file.
 - **📧 Contact Form** with form validation.
 
 ## 🛠 Technologies Used
@@ -49,7 +48,7 @@ npm run deploy
 ## 📬 Contact
 Feel free to connect with me:
 - 📧 Email: hseinkteish21@gmail.com
-- 💼 LinkedIn: [Your LinkedIn](https://www.linkedin.com/in/hsein-kteish-287783212/)
+- 💼 LinkedIn: [Your LinkedIn](https://www.linkedin.com/in/hussein-kteish-287783212/)
 - 🐙 GitHub: [Your GitHub](https://github.com/HseinKt)
 
 💡 **Made with ❤️ & React.js**
