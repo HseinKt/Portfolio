@@ -4,7 +4,8 @@
 
 .featured-box {
   display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
+  /* grid-template-columns: 1.25fr 0.75fr; */
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
   align-items: center;
   gap: 2.5rem;
   min-height: 100vh;
