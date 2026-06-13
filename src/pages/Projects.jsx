@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import '../CSS/Projects.css';
-import { motion, AnimatePresence } from "framer-motion";
-import { Github, ExternalLink, FileText, Shield } from "lucide-react";
+import { motion } from "framer-motion";
+import { Github, ExternalLink, FileText, Shield, ChevronLeft, ChevronRight } from "lucide-react";
 
 const projectsData = [
     {
@@ -108,12 +108,88 @@ const FILTERS = [
     { label: "Cybersecurity", value: "cybersecurity" }
 ];
 
+/* ── Helper: determine slides per view based on window width ── */
+function getSlidesPerView() {
+    if (typeof window === "undefined") return 3;
+    if (window.innerWidth <= 640) return 1;
+    if (window.innerWidth <= 900) return 2;
+    return 3;
+}
+
 const Projects = () => {
     const [activeFilter, setActiveFilter] = useState("all");
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [slidesPerView, setSlidesPerView] = useState(getSlidesPerView);
+    const [isTransitioning, setIsTransitioning] = useState(false);
+    const touchStartX = useRef(0);
+    const touchEndX = useRef(0);
 
     const filtered = projectsData.filter(p =>
         activeFilter === "all" || p.categories.includes(activeFilter)
     );
+
+    const maxIndex = Math.max(0, filtered.length - slidesPerView);
+
+    /* Reset index when filter changes */
+    useEffect(() => {
+        setCurrentIndex(0);
+    }, [activeFilter]);
+
+    /* Responsive listener */
+    useEffect(() => {
+        const handleResize = () => {
+            const newSpv = getSlidesPerView();
+            setSlidesPerView(newSpv);
+            setCurrentIndex(prev => Math.min(prev, Math.max(0, filtered.length - newSpv)));
+        };
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, [filtered.length]);
+
+    /* Navigation */
+    const goTo = useCallback((idx) => {
+        const clamped = Math.max(0, Math.min(idx, maxIndex));
+        if (clamped !== currentIndex) {
+            setIsTransitioning(true);
+            setCurrentIndex(clamped);
+            setTimeout(() => setIsTransitioning(false), 500);
+        }
+    }, [currentIndex, maxIndex]);
+
+    const goPrev = useCallback(() => goTo(currentIndex - 1), [goTo, currentIndex]);
+    const goNext = useCallback(() => goTo(currentIndex + 1), [goTo, currentIndex]);
+
+    /* Keyboard navigation */
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === "ArrowLeft") goPrev();
+            if (e.key === "ArrowRight") goNext();
+        };
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    }, [goPrev, goNext]);
+
+    /* Touch/Swipe support */
+    const handleTouchStart = (e) => {
+        touchStartX.current = e.touches[0].clientX;
+    };
+    const handleTouchMove = (e) => {
+        touchEndX.current = e.touches[0].clientX;
+    };
+    const handleTouchEnd = () => {
+        const diff = touchStartX.current - touchEndX.current;
+        const threshold = 50;
+        if (diff > threshold) goNext();
+        else if (diff < -threshold) goPrev();
+    };
+
+    /* Carousel math */
+    const gapPx = 24;
+    const slideWidthPercent = 100 / slidesPerView;
+    const translateX = -(currentIndex * slideWidthPercent);
+
+    /* Pagination dots */
+    const totalDots = maxIndex + 1;
 
     return (
         <div id="projects" className="section">
@@ -143,84 +219,136 @@ const Projects = () => {
                 ))}
             </div>
 
-            <div className="project-container">
-                <AnimatePresence mode="popLayout">
-                    {filtered.map((project, idx) => (
-                        <motion.div
-                            key={project.title}
-                            layout
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.95 }}
-                            transition={{ duration: 0.4, delay: idx * 0.08 }}
-                            className="project-box glass-card"
-                        >
-                            {/* Image or styled placeholder */}
-                            <div className="project-image-wrapper">
-                                {project.image ? (
-                                    <img src={project.image} alt={project.title} loading="lazy" />
-                                ) : (
-                                    <div className={`project-placeholder placeholder-${project.placeholderColor}`}>
-                                        <span className="project-placeholder-icon">{project.placeholderIcon}</span>
-                                        <span className="project-placeholder-label">{project.title}</span>
-                                    </div>
-                                )}
-                                <div className="project-overlay">
-                                    {project.github && (
-                                        <a href={project.github} className="project-overlay-link" target="_blank" rel="noopener noreferrer" aria-label="View source on GitHub">
-                                            <Github size={18} />
-                                        </a>
-                                    )}
-                                    {project.reportLink && (
-                                        <a href={project.reportLink} className="project-overlay-link" target="_blank" rel="noopener noreferrer" aria-label="View report">
-                                            <ExternalLink size={18} />
-                                        </a>
-                                    )}
-                                    {project.github && (
-                                        <a href={project.github} className="project-overlay-link" target="_blank" rel="noopener noreferrer" aria-label="View live">
-                                            <ExternalLink size={18} />
-                                        </a>
-                                    )}
-                                </div>
-                            </div>
+            {/* Carousel */}
+            <div className="carousel-wrapper">
+                {/* Prev Arrow */}
+                <button
+                    className={`carousel-arrow carousel-arrow-prev${currentIndex === 0 ? " disabled" : ""}`}
+                    onClick={goPrev}
+                    disabled={currentIndex === 0}
+                    aria-label="Previous projects"
+                    id="carousel-prev"
+                >
+                    <ChevronLeft size={22} />
+                </button>
 
-                            <div className="project-details">
-                                <div className="project-title-row">
-                                    <h3>{project.title}</h3>
-                                    {project.categories.includes("cybersecurity") && (
-                                        <span className="project-cyber-badge">
-                                            <Shield size={12} /> Security
-                                        </span>
-                                    )}
+                {/* Viewport */}
+                <div
+                    className="carousel-viewport"
+                    onTouchStart={handleTouchStart}
+                    onTouchMove={handleTouchMove}
+                    onTouchEnd={handleTouchEnd}
+                >
+                    <div
+                        className="carousel-track"
+                        style={{
+                            transform: `translateX(calc(${translateX}% - ${currentIndex * gapPx}px))`,
+                            gap: `${gapPx}px`,
+                        }}
+                    >
+                        {filtered.map((project, idx) => (
+                            <motion.div
+                                key={project.title}
+                                initial={{ opacity: 0, y: 24 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.45, delay: idx * 0.06 }}
+                                className="carousel-slide"
+                                style={{
+                                    minWidth: `calc(${slideWidthPercent}% - ${gapPx * (slidesPerView - 1) / slidesPerView}px)`,
+                                    maxWidth: `calc(${slideWidthPercent}% - ${gapPx * (slidesPerView - 1) / slidesPerView}px)`,
+                                }}
+                            >
+                                <div className="project-box glass-card">
+                                    {/* Image or styled placeholder */}
+                                    <div className="project-image-wrapper">
+                                        {project.image ? (
+                                            <img src={project.image} alt={project.title} loading="lazy" />
+                                        ) : (
+                                            <div className={`project-placeholder placeholder-${project.placeholderColor}`}>
+                                                <span className="project-placeholder-icon">{project.placeholderIcon}</span>
+                                                <span className="project-placeholder-label">{project.title}</span>
+                                            </div>
+                                        )}
+                                        <div className="project-overlay">
+                                            {project.github && (
+                                                <a href={project.github} className="project-overlay-link" target="_blank" rel="noopener noreferrer" aria-label="View source on GitHub">
+                                                    <Github size={18} />
+                                                </a>
+                                            )}
+                                            {project.reportLink && (
+                                                <a href={project.reportLink} className="project-overlay-link" target="_blank" rel="noopener noreferrer" aria-label="View report">
+                                                    <ExternalLink size={18} />
+                                                </a>
+                                            )}
+                                        </div>
+                                    </div>
+
+                                    <div className="project-details">
+                                        <div className="project-title-row">
+                                            <h3>{project.title}</h3>
+                                            {project.categories.includes("cybersecurity") && (
+                                                <span className="project-cyber-badge">
+                                                    <Shield size={12} /> Security
+                                                </span>
+                                            )}
+                                        </div>
+                                        <p className="project-subtitle">{project.subtitle}</p>
+                                        <ul className="project-desc-list">
+                                            {project.description.map((line, i) => (
+                                                <li key={i}>{line}</li>
+                                            ))}
+                                        </ul>
+                                        <div className="project-tech-list">
+                                            {project.techStack.map((tech) => (
+                                                <span key={tech} className="project-tech-badge">{tech}</span>
+                                            ))}
+                                        </div>
+                                        <div className="project-action-row">
+                                            {project.github && (
+                                                <a href={project.github} className="btn btn-sm" target="_blank" rel="noopener noreferrer">
+                                                    <Github size={14} /> GitHub
+                                                </a>
+                                            )}
+                                            {project.reportLink && (
+                                                <a href={project.reportLink} className="btn btn-sm btn-primary" target="_blank" rel="noopener noreferrer">
+                                                    <ExternalLink size={14} /> View Report
+                                                </a>
+                                            )}
+                                        </div>
+                                    </div>
                                 </div>
-                                <p className="project-subtitle">{project.subtitle}</p>
-                                <ul className="project-desc-list">
-                                    {project.description.map((line, i) => (
-                                        <li key={i}>{line}</li>
-                                    ))}
-                                </ul>
-                                <div className="project-tech-list">
-                                    {project.techStack.map((tech) => (
-                                        <span key={tech} className="project-tech-badge">{tech}</span>
-                                    ))}
-                                </div>
-                                <div className="project-action-row">
-                                    {project.github && (
-                                        <a href={project.github} className="btn btn-sm" target="_blank" rel="noopener noreferrer">
-                                            <Github size={14} /> GitHub
-                                        </a>
-                                    )}
-                                    {project.reportLink && (
-                                        <a href={project.reportLink} className="btn btn-sm btn-primary" target="_blank" rel="noopener noreferrer">
-                                            <ExternalLink size={14} /> View Report
-                                        </a>
-                                    )}
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
-                </AnimatePresence>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Next Arrow */}
+                <button
+                    className={`carousel-arrow carousel-arrow-next${currentIndex >= maxIndex ? " disabled" : ""}`}
+                    onClick={goNext}
+                    disabled={currentIndex >= maxIndex}
+                    aria-label="Next projects"
+                    id="carousel-next"
+                >
+                    <ChevronRight size={22} />
+                </button>
             </div>
+
+            {/* Pagination dots */}
+            {totalDots > 1 && (
+                <div className="carousel-dots">
+                    {Array.from({ length: totalDots }, (_, i) => (
+                        <button
+                            key={i}
+                            className={`carousel-dot${i === currentIndex ? " active" : ""}`}
+                            onClick={() => goTo(i)}
+                            aria-label={`Go to slide ${i + 1}`}
+                            id={`carousel-dot-${i}`}
+                        />
+                    ))}
+                </div>
+            )}
         </div>
     );
 }
