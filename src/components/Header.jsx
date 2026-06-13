@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import '../CSS/Header.css'
 import { FiMenu } from "react-icons/fi";
 import { motion } from "framer-motion"
-import DownloadCV from "./DownloadCV";
 
 const Header = () => {
     const [active, setActive] = useState("Home");
@@ -10,7 +9,7 @@ const Header = () => {
     const [shadow, setShadow] = useState(false);
     const menuRef = useRef(null);
 
-    const sections = ["Home", "About", "Projects", "Experience", "Contact"];
+    const sections = ["Home", "About", "Projects", "Cybersecurity", "Experience", "Resume", "Contact"];
 
     const handleClick = (section) => {
         setActive(section);
@@ -88,7 +87,9 @@ const Header = () => {
             </div>
 
             <div className="nav-btn">
-                <DownloadCV />
+                <a href="#resume" className="btn btn-primary" style={{ padding: '0.5rem 1.2rem', fontSize: '0.85rem', textDecoration: 'none' }}>
+                    Resumes
+                </a>
             </div>
 
             <div className="nav-menu-dropdown" ref={menuRef}>
@@ -106,7 +107,7 @@ const Header = () => {
                         animate={{ x: isOpen ? "0%" : "100%" }} // Slide in/out
                         transition={{ duration: 0.4, ease: "easeInOut" }}
                     >
-                        {["Home", "About", "Projects", "Experience", "Contact"].map((section) => (
+                        {sections.map((section) => (
                             <li key={section}>
                                 <a 
                                     href={`#${section.toLowerCase()}`} 

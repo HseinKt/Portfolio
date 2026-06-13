@@ -3,11 +3,11 @@ import { createContext, useEffect, useState } from "react";
 export const DarkModeContext = createContext();
 
 export function DarkModeProvider({ children }) {
-
-    const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem("darkMode") === "true");
+    // Default to true (dark mode) if not set to false
+    const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem("darkMode") !== "false");
 
     useEffect(() => {
-        localStorage.setItem("dakMode", isDarkMode ? "true": "false");
+        localStorage.setItem("darkMode", isDarkMode ? "true" : "false");
     }, [isDarkMode]);
 
     const toggleDarkMode = () => setIsDarkMode(!isDarkMode);

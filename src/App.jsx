@@ -1,13 +1,8 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 import Main from './pages/Main';
-import Home from './pages/Home';
-import About from './pages/About';
-import Experience from './pages/Experience';
-import Projects from './pages/Projects';
-import Contact from './pages/Contact';
 import NotFound from './components/NotFound';
-import { DarkModeContext } from './hooks/DarkModeCOntext';
+import { DarkModeContext } from './hooks/DarkModeContext';
 import { useContext } from 'react';
 
 const App = () => {
@@ -17,15 +12,15 @@ const App = () => {
         <div className={isDarkMode? "dark-mode": "light-mode"}>
             <Routes>
                 <Route path="/" element={<Main />} />
-                <Route path='/home' element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/experience" element={<Experience />} />
-                <Route path="/projects" element={<Projects />} />
-                <Route path="/contact" element={<Contact />} />
+                <Route path='/home' element={<Navigate to="/" replace />} />
+                <Route path="/about" element={<Navigate to="/#about" replace />} />
+                <Route path="/experience" element={<Navigate to="/#experience" replace />} />
+                <Route path="/projects" element={<Navigate to="/#projects" replace />} />
+                <Route path="/contact" element={<Navigate to="/#contact" replace />} />
                 <Route path='*' element={<NotFound />} />
             </Routes>
         </div>
      );
 }
- 
+
 export default App;

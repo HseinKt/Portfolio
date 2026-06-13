@@ -6,22 +6,27 @@ import Contact from "./Contact";
 import Experience from "./Experience";
 import Home from "./Home";
 import Projects from "./Projects";
+import CybersecurityJourney from "../components/CybersecurityJourney";
+import ResumeSection from "../components/ResumeSection";
 
 const Main = () => {
-    return ( 
+    return (
         <div className="container">
             <DarkMode />
             <Header />
             <div className="main-wrapper">
-                <section id="home" className="featured-box"><Home /></section>
+                {/* Home renders its own featured-box layout — no extra section wrapper needed */}
+                <Home />
                 <section id="about" className="section"><About /></section>
                 <section id="projects" className="section"><Projects /></section>
+                <section id="cybersecurity" className="section"><CybersecurityJourney /></section>
                 <section id="experience" className="section"><Experience /></section>
+                <section id="resume" className="section"><ResumeSection /></section>
                 <section id="contact" className="section"><Contact /></section>
             </div>
             <Footer />
         </div>
-     );
+    );
 }
- 
+
 export default Main;
