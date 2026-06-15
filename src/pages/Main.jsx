@@ -8,6 +8,7 @@ import Home from "./Home";
 import Projects from "./Projects";
 import CybersecurityJourney from "../components/CybersecurityJourney";
 import ResumeSection from "../components/ResumeSection";
+import SocialPresence from "../components/SocialPresence";
 
 const Main = () => {
     return (
@@ -20,6 +21,7 @@ const Main = () => {
                 <section id="about" className="section"><About /></section>
                 <section id="projects" className="section"><Projects /></section>
                 <section id="cybersecurity" className="section"><CybersecurityJourney /></section>
+                <section id="social" className="section" style={{ padding: '0' }}><SocialPresence /></section>
                 <section id="experience" className="section"><Experience /></section>
                 <section id="resume" className="section"><ResumeSection /></section>
                 <section id="contact" className="section"><Contact /></section>

@@ -272,7 +272,26 @@
 /* ── Responsive ── */
 @media only screen and (max-width: 990px) {
   .cert-cards-grid {
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 1.5rem;
+    -webkit-overflow-scrolling: touch;
+    gap: 1.5rem;
+  }
+
+  .cert-card {
+    min-width: 300px;
+    flex-shrink: 0;
+    scroll-snap-align: center;
+  }
+
+  .cert-cards-grid::-webkit-scrollbar {
+    display: none;
+  }
+  .cert-cards-grid {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
   .cyber-timeline {
@@ -285,8 +304,9 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .cert-cards-grid {
-    grid-template-columns: 1fr;
+  .cert-card {
+    min-width: 260px;
+    scroll-snap-align: center;
   }
 
   .cyber-card-meta {

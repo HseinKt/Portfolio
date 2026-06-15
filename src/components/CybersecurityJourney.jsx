@@ -28,6 +28,14 @@ const trainingData = [
         description: "Information security frameworks, threat intelligence, cryptography, network defense, and secure system design."
     },
     {
+        title: "Phish Busters Initiative",
+        organization: "Lebanese University / Semicolon Academy",
+        date: "2025 - Present",
+        duration: "Ongoing",
+        status: "Active",
+        description: "Cybersecurity Ambassador → Joined Phish Busters Initiative → University Awareness Campaigns → Cybersecurity Community Outreach → Student Security Education"
+    },
+    {
         title: "Cybersecurity Specialist",
         organization: "Semicolon Academy",
         date: "5 February 2026",

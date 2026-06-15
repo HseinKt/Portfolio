@@ -7,6 +7,8 @@ import { motion } from "framer-motion";
 
 const Contact = () => {
     const [successMessage, setSuccessMessage] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -17,32 +19,65 @@ const Contact = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
     
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        
+        // Basic Validation
+        if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+            setErrorMessage("Please fill out all fields.");
+            setTimeout(() => setErrorMessage(""), 4000);
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email)) {
+            setErrorMessage("Please enter a valid email address.");
+            setTimeout(() => setErrorMessage(""), 4000);
+            return;
+        }
+
+        setIsLoading(true);
+        setErrorMessage("");
+        setSuccessMessage("");
 
         const serviceID = "service_r26lurf";
         const templateID = "template_btw5a1w";
         const userID = "DQ6BjSCdBqcdkzYY7";
 
-        emailjs.send(serviceID, templateID, formData, userID)
-        .then((response) => {
+        try {
+            const response = await emailjs.send(serviceID, templateID, formData, userID);
             console.log("Email sent successfully!", response.status, response.text);
+            
             setFormData({ name: '', email: '', message: '' }); // Clear form
             setSuccessMessage("Message sent successfully! ✅");
             
             setTimeout(() => {
                 setSuccessMessage("");
-            }, 3000)
-        })
-        .catch((error) => {
+            }, 4000);
+        } catch (error) {
             console.error("Email sending failed:", error);
-            alert("Failed to send message. Please try again.");
-        });
+            
+            // Extract meaningful error message
+            let errorText = "Please check your connection or try again later.";
+            if (error.text) {
+                errorText = error.text;
+            } else if (error.message) {
+                errorText = error.message;
+            } else if (typeof error === 'string') {
+                errorText = error;
+            }
+            
+            setErrorMessage(`Failed to send message: ${errorText}`);
+            setTimeout(() => setErrorMessage(""), 6000);
+        } finally {
+            setIsLoading(false);
+        }
     }
 
     return ( 
         <div id="contact" className="section">
             {successMessage && <div className='success-message'>{successMessage}</div>}
+            {errorMessage && <div className='error-message' style={{ backgroundColor: 'rgba(255, 60, 60, 0.1)', color: '#ff4d4d', padding: '1rem', borderRadius: '8px', marginBottom: '1rem', border: '1px solid rgba(255, 60, 60, 0.2)', textAlign: 'center' }}>{errorMessage}</div>}
             
             <motion.div 
                 initial={{ opacity: 0, y: 15 }}
@@ -115,6 +150,7 @@ const Contact = () => {
                                     value={formData.name}
                                     onChange={handleChange}
                                     required
+                                    disabled={isLoading}
                                 />
                             </div>
 
@@ -129,6 +165,7 @@ const Contact = () => {
                                     value={formData.email}
                                     onChange={handleChange}
                                     required
+                                    disabled={isLoading}
                                 />
                             </div>
                         </div>
@@ -143,12 +180,14 @@ const Contact = () => {
                                 value={formData.message} 
                                 onChange={handleChange}
                                 required
+                                disabled={isLoading}
                             ></textarea>
                         </div>
                         
                         <div>
-                            <button type='submit' className="btn btn-primary" style={{ padding: '0.8rem 2rem' }}>
-                                Send Message <MdSend style={{ transform: 'rotate(-45deg)', marginLeft: '4px' }} /> 
+                            <button type='submit' className="btn btn-primary" style={{ padding: '0.8rem 2rem' }} disabled={isLoading}>
+                                {isLoading ? "Sending..." : "Send Message"} 
+                                {!isLoading && <MdSend style={{ transform: 'rotate(-45deg)', marginLeft: '4px' }} />}
                             </button>
                         </div>
                     </form>

@@ -1,0 +1,119 @@
+.phish-busters-card {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.phish-busters-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #ff4d4d, #ff8c00);
+}
+
+.pb-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.pb-logo-placeholder {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(255, 77, 77, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 77, 77, 0.2);
+}
+
+.pb-header h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    color: var(--text-color);
+}
+
+.pb-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.pb-mission h3, .pb-achievements h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.pb-mission p {
+    color: var(--text-color);
+    line-height: 1.7;
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.pb-achievements ul {
+    list-style: none;
+    padding-left: 0.5rem;
+}
+
+.pb-achievements li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-color);
+    opacity: 0.9;
+    line-height: 1.5;
+}
+
+.pb-achievements li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.pb-social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.pb-social-links .btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+}
+
+@media (max-width: 600px) {
+    .phish-busters-card {
+        padding: 1.5rem;
+    }
+    
+    .pb-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .pb-social-links {
+        justify-content: center;
+    }
+}

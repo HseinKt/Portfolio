@@ -1,12 +1,38 @@
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import '../CSS/About.css';
 import { motion } from "framer-motion";
 import {
     Layout, Server, Database, Shield,
-    Terminal, GitMerge, Sparkles
+    Terminal, GitMerge, Sparkles,
+    ChevronLeft, ChevronRight
 } from "lucide-react";
 
 const About = () => {
+    const scrollContainerRef = useRef(null);
+    const [canScrollLeft, setCanScrollLeft] = useState(false);
+    const [canScrollRight, setCanScrollRight] = useState(true);
+
+    const handleScroll = () => {
+        if (scrollContainerRef.current) {
+            const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+            setCanScrollLeft(scrollLeft > 0);
+            // Add a 10px threshold to avoid rounding issues
+            setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+        }
+    };
+
+    useEffect(() => {
+        handleScroll();
+        window.addEventListener("resize", handleScroll);
+        return () => window.removeEventListener("resize", handleScroll);
+    }, []);
+
+    const scrollByAmount = (amount) => {
+        if (scrollContainerRef.current) {
+            scrollContainerRef.current.scrollBy({ left: amount, behavior: 'smooth' });
+        }
+    };
+
     const skillsData = [
         {
             category: "Frontend",
@@ -97,49 +123,82 @@ const About = () => {
                 >
                     <h3>My Story</h3>
                     <p>
-                        I am a Full-Stack Developer and Cybersecurity Researcher. I love building highly functional web applications while incorporating rigorous security baselines right from the start.
+                        I'm Hussein Kteish, a Full-Stack Developer and Cybersecurity Researcher passionate about building secure, scalable, and modern web applications.
                     </p>
                     <p>
-                        With deep expertise in modern React frameworks, backend systems (NestJS, Laravel, ASP.NET Core), and web application security auditing, I focus on building products that are not only user-friendly but also resilient against modern vulnerability vectors.
+                        With experience across frontend and backend development, I develop complete solutions using technologies such as React, Node.js, NestJS, Laravel, and ASP.NET Core. Alongside software development, I actively study cybersecurity, focusing on web application security, vulnerability assessment, and secure development practices.
                     </p>
                     <p>
-                        Additionally, I actively explore artificial intelligence integrations, leveraging Large Language Models (LLMs) and advanced prompt engineering to build smart workflows and modern automation layers.
+                        I believe security should be integrated into the development lifecycle from the beginning, not added as an afterthought. By combining software engineering and cybersecurity knowledge, I strive to build applications that deliver excellent user experiences while maintaining strong security standards.
+                    </p>
+                    <p>
+                        I also leverage modern AI-powered development tools and agents to improve productivity, accelerate development workflows, and enhance code quality, allowing me to deliver reliable solutions more efficiently.
                     </p>
                 </motion.div>
 
                 <div className="skills-container">
-                    <motion.h3
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
-                    >
-                        Technical Skill Set
-                    </motion.h3>
+                    <div className="skills-header-row">
+                        <motion.h3
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            Technical Skill Set
+                        </motion.h3>
+                        <div className="skills-meta">
+                            <span className="skills-counter">{skillsData.length} Categories</span>
+                            <span className="skills-swipe-hint">Swipe to explore &rarr;</span>
+                        </div>
+                    </div>
 
-                    <div className="skills-grid">
-                        {skillsData.map((group, idx) => (
-                            <motion.div
-                                key={group.category}
-                                initial={{ opacity: 0, y: 15 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: idx * 0.07 }}
-                                className={`skill-category-card skill-color-${group.color}`}
-                            >
-                                <h4>
-                                    <span className="skill-icon">{group.icon}</span>
-                                    {group.category}
-                                </h4>
-                                <div className="skill-badges-list">
-                                    {group.skills.map((skill) => (
-                                        <span key={skill} className="skill-badge">
-                                            {skill}
-                                        </span>
-                                    ))}
-                                </div>
-                            </motion.div>
-                        ))}
+                    <div className="skills-carousel-wrapper">
+                        <button 
+                            className={`skills-arrow left ${!canScrollLeft ? 'disabled' : ''}`}
+                            onClick={() => scrollByAmount(-320)}
+                            aria-label="Previous skills"
+                            aria-hidden={!canScrollLeft}
+                        >
+                            <ChevronLeft size={22} />
+                        </button>
+
+                        <div 
+                            className="skills-grid" 
+                            ref={scrollContainerRef} 
+                            onScroll={handleScroll}
+                        >
+                            {skillsData.map((group, idx) => (
+                                <motion.div
+                                    key={group.category}
+                                    initial={{ opacity: 0, y: 15 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5, delay: idx * 0.07 }}
+                                    className={`skill-category-card skill-color-${group.color}`}
+                                >
+                                    <h4>
+                                        <span className="skill-icon">{group.icon}</span>
+                                        {group.category}
+                                    </h4>
+                                    <div className="skill-badges-list">
+                                        {group.skills.map((skill) => (
+                                            <span key={skill} className="skill-badge">
+                                                {skill}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+
+                        <button 
+                            className={`skills-arrow right ${!canScrollRight ? 'disabled' : ''}`}
+                            onClick={() => scrollByAmount(320)}
+                            aria-label="Next skills"
+                            aria-hidden={!canScrollRight}
+                        >
+                            <ChevronRight size={22} />
+                        </button>
                     </div>
                 </div>
             </div>

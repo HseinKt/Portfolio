@@ -26,6 +26,10 @@ const experiencesData = [
             "Deliver cybersecurity workshops covering web security, OSINT, and penetration testing fundamentals.",
             "Support students in understanding secure development concepts and OWASP principles.",
             "Bridge the gap between development and security for aspiring engineers.",
+            "Phish Busters Initiative: Contributed to cybersecurity awareness campaigns focused on phishing attacks and social engineering.",
+            "Participated in creating educational content for university students.",
+            "Helped promote cybersecurity best practices and safe online behavior.",
+            "Supported community outreach and awareness activities through social media and university events."
         ]
     },
     {
