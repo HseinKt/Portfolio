@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import '../CSS/CybersecurityJourney.css';
 import { motion } from "framer-motion";
 import {
@@ -88,7 +87,7 @@ const CERT_BASE = "/Portfolio/images/Certificates/";
 
 const CybersecurityJourney = () => {
     return (
-        <div id="cybersecurity" className="section">
+        <div>
             <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}

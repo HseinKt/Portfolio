@@ -1,4 +1,3 @@
-import React from "react";
 import '../CSS/ResumeSection.css';
 import { motion } from "framer-motion";
 import { FileText, Eye, Download, Layers, Shield } from "lucide-react";
@@ -22,7 +21,7 @@ const ResumeSection = () => {
     ];
 
     return ( 
-        <div id="resume" className="section">
+        <div>
             <motion.div 
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import '../CSS/Contact.css';
 import { MdSend } from 'react-icons/md';
 import { Mail, Phone, MapPin } from 'lucide-react';
@@ -75,7 +75,7 @@ const Contact = () => {
     }
 
     return ( 
-        <div id="contact" className="section">
+        <div>
             {successMessage && <div className='success-message'>{successMessage}</div>}
             {errorMessage && <div className='error-message' style={{ backgroundColor: 'rgba(255, 60, 60, 0.1)', color: '#ff4d4d', padding: '1rem', borderRadius: '8px', marginBottom: '1rem', border: '1px solid rgba(255, 60, 60, 0.2)', textAlign: 'center' }}>{errorMessage}</div>}
             
@@ -87,7 +87,7 @@ const Contact = () => {
                 className="top-header"
             >
                 <h1>Get In Touch</h1>
-                <p>Have an idea or a query? Drop me a message and let's start a conversation.</p>
+                <p>Have an idea or a query? Drop me a message and let&apos;s start a conversation.</p>
             </motion.div>
 
             <div className='contact-grid'>

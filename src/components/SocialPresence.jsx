@@ -1,4 +1,3 @@
-import React from 'react';
 import '../CSS/SocialPresence.css';
 import { motion } from "framer-motion";
 import { ShieldAlert, Users, Target } from "lucide-react";
@@ -6,7 +5,7 @@ import { FaLinkedin, FaInstagram } from "react-icons/fa";
 
 const SocialPresence = () => {
     return (
-        <div id="social-presence" className="section">
+        <div>
             <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}

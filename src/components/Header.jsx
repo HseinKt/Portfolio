@@ -3,13 +3,13 @@ import '../CSS/Header.css'
 import { FiMenu } from "react-icons/fi";
 import { motion } from "framer-motion"
 
+const sections = ["Home", "About", "Projects", "Gymind", "Cybersecurity", "Experience", "Resume", "Contact"];
+
 const Header = () => {
     const [active, setActive] = useState("Home");
     const [isOpen, setIsOpen] = useState(false);
     const [shadow, setShadow] = useState(false);
     const menuRef = useRef(null);
-
-    const sections = ["Home", "About", "Projects", "Cybersecurity", "Experience", "Resume", "Contact"];
 
     const handleClick = (section) => {
         setActive(section);

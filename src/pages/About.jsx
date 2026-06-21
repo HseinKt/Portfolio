@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import '../CSS/About.css';
 import { motion } from "framer-motion";
 import {
@@ -123,7 +123,7 @@ const About = () => {
                 >
                     <h3>My Story</h3>
                     <p>
-                        I'm Hussein Kteish, a Full-Stack Developer and Cybersecurity Researcher passionate about building secure, scalable, and modern web applications.
+                        I&apos;m Hussein Kteish, a Full-Stack Developer and Cybersecurity Researcher passionate about building secure, scalable, and modern web applications.
                     </p>
                     <p>
                         With experience across frontend and backend development, I develop complete solutions using technologies such as React, Node.js, NestJS, Laravel, and ASP.NET Core. Alongside software development, I actively study cybersecurity, focusing on web application security, vulnerability assessment, and secure development practices.

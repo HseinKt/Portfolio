@@ -1,6 +1,5 @@
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import '../CSS/Home.css';
-import React from "react";
 import { Typewriter } from "react-simple-typewriter";
 import { motion } from "framer-motion";
 import { Mail, FileText } from "lucide-react";
@@ -28,7 +27,7 @@ const Home = () => {
                 </div>
 
                 <div className="featured-name">
-                    <p>I'm Hussein Kteish</p>
+                    <p>I&apos;m Hussein Kteish</p>
                     <div className="typewriter-wrapper">
                         <span className="typedText">
                             <Typewriter

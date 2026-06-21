@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import '../CSS/Projects.css';
 import { motion } from "framer-motion";
 import { Github, ExternalLink, FileText, Shield, ChevronLeft, ChevronRight } from "lucide-react";
@@ -120,7 +120,6 @@ const Projects = () => {
     const [activeFilter, setActiveFilter] = useState("all");
     const [currentIndex, setCurrentIndex] = useState(0);
     const [slidesPerView, setSlidesPerView] = useState(getSlidesPerView);
-    const [isTransitioning, setIsTransitioning] = useState(false);
     const touchStartX = useRef(0);
     const touchEndX = useRef(0);
 
@@ -146,13 +145,10 @@ const Projects = () => {
         return () => window.removeEventListener("resize", handleResize);
     }, [filtered.length]);
 
-    /* Navigation */
     const goTo = useCallback((idx) => {
         const clamped = Math.max(0, Math.min(idx, maxIndex));
         if (clamped !== currentIndex) {
-            setIsTransitioning(true);
             setCurrentIndex(clamped);
-            setTimeout(() => setIsTransitioning(false), 500);
         }
     }, [currentIndex, maxIndex]);
 
@@ -192,7 +188,7 @@ const Projects = () => {
     const totalDots = maxIndex + 1;
 
     return (
-        <div id="projects" className="section">
+        <div>
             <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}

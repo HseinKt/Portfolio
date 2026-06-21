@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import '../CSS/Experience.css';
 import { motion, AnimatePresence } from "framer-motion";
 import { Briefcase, Calendar, MapPin, Shield, Code2 } from "lucide-react";
@@ -76,6 +76,7 @@ const FILTERS = [
     { label: "Cybersecurity", value: "cybersecurity" }
 ];
 
+// eslint-disable-next-line react/prop-types
 const CategoryIcon = ({ category }) =>
     category === "cybersecurity"
         ? <Shield size={13} />
@@ -89,7 +90,7 @@ const Experience = () => {
     );
 
     return (
-        <div id="experience" className="section">
+        <div>
             <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}

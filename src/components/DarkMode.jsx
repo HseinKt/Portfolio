@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
-import { DarkModeContext } from "../hooks/DarkModeCOntext";
+import { DarkModeContext } from "../hooks/DarkModeContext";
 // import '../CSS/DarkMode.css';
 
 const DarkMode = () => {
