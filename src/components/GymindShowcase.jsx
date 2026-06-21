@@ -130,13 +130,26 @@ const GymindShowcase = () => {
                     className="gymind-info-column"
                 >
                     <div className="gymind-intro-card glass-card">
-                        <h3>About the Ecosystem</h3>
-                        <p>
-                            Gymind (formerly ForgeHub) is a production-grade, enterprise-ready SaaS ecosystem engineered to unify gym operations, check-in security, and member experiences. 
-                        </p>
-                        <p>
-                            By bridging a high-performance .NET 8 API with real-time mobile apps and administrative web dashboards, it empowers fitness centers to prevent attendance fraud, optimize branch capacities, and automate billing at scale.
-                        </p>
+                        <div className="intro-card-text">
+                            <h3>About the Ecosystem</h3>
+                            <p>
+                                Gymind (formerly ForgeHub) is a production-grade, enterprise-ready SaaS ecosystem engineered to unify gym operations, check-in security, and member experiences. 
+                            </p>
+                            <p>
+                                By bridging a high-performance .NET 8 API with real-time mobile apps and administrative web dashboards, it empowers fitness centers to prevent attendance fraud, optimize branch capacities, and automate billing at scale.
+                            </p>
+                        </div>
+                        <motion.div 
+                            className="intro-card-logo-container"
+                            animate={{ y: [0, -8, 0] }}
+                            transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                        >
+                            <img 
+                                src="/Portfolio/images/GYMIN-LOGO.png" 
+                                alt="Gymind Floating Logo" 
+                                className="intro-card-floating-logo"
+                            />
+                        </motion.div>
                     </div>
 
                     <div className="gymind-links-grid">

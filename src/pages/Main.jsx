@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import DarkMode from "../components/DarkMode";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -15,6 +16,21 @@ const Main = () => {
     return (
         <div className="container">
             <DarkMode />
+            
+            {/* Floating Gymind Showcase Anchor Badge */}
+            <motion.a 
+                href="#gymind" 
+                className="gymind-floating-badge"
+                title="Flagship Project: Gymind"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                whileHover={{ scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 300, damping: 15 }}
+            >
+                <img src="/Portfolio/images/GYMIN-LOGO.png" alt="Gymind Logo" />
+                <span className="badge-tooltip">Explore Gymind</span>
+            </motion.a>
+
             <Header />
             <div className="main-wrapper">
                 {/* Home renders its own featured-box layout — no extra section wrapper needed */}
